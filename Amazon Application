@@ -1,0 +1,218 @@
+import java.util.*;
+public class Product {
+	static double balance = 50000.00;
+	
+	static double shirt = 1500.00;
+    static double pant =  2000.00;
+    static double mobile = 25000.00;
+    static double watch = 15000.00;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String product1 = "Shirt";
+        String product2 = "Pant";
+        String product3 = "Mobile";
+        String product4 = "Watch";
+        
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome to Amazon!");
+        System.out.println("1."+product1);
+        System.out.println("2."+product2);
+        System.out.println("3."+product3);
+        System.out.println("4."+product4);
+        System.out.println("please select the product from above list");
+        int n = sc.nextInt();
+        switch(n){
+            case 1:
+                System.out.println(product1 + " costs " + shirt + " rupees");
+                System.out.println("1.Do you want to buy the product");
+                System.out.println("2.Go back to main menu");
+                int m = sc.nextInt();
+                if(m == 1) {
+                	buy(shirt);
+                }
+                if(m == 2) {
+                	menu();
+                }
+                break;
+            case 2:
+            	System.out.println(product2 + " costs " + pant + " rupees");
+                System.out.println("1.Do you want to buy the product");
+                System.out.println("2.Go back to main menu");
+                int l = sc.nextInt();
+                if(l == 1) {
+                	buy(pant);
+                }
+                if(l == 2) {
+                	menu();
+                }
+                break;
+            case 3:
+            	System.out.println(product3 + " costs " + mobile + " rupees");
+                System.out.println("1.Do you want to buy the product");
+                System.out.println("2.Go back to main menu");
+                int o = sc.nextInt();
+                if(o == 1) {
+                	buy(mobile);
+                }
+                if(o == 2) {
+                	menu();
+                }
+                break;
+            case 4:
+            	System.out.println(product4 + " costs " + watch + " rupees");
+                System.out.println("1.Do you want to buy the product");
+                System.out.println("2.Go back to main menu");
+                int r = sc.nextInt();
+                if(r == 1) {
+                	buy(watch);
+                }
+                if(r == 2) {
+                	menu();
+                }
+                break;
+            default:
+            System.out.println("come again");
+        }
+
+	}
+	public static void buy(double d) {
+		
+		Scanner sc = new Scanner(System.in);
+		boolean in = false;
+		if(d > balance) {
+			System.out.println("You have Insufficient balance in your account");
+			System.out.println("1.Do you want to add money");
+			System.out.println("2.Go back to the main menu");
+			int n = sc.nextInt();
+			if(n == 1) {
+				System.out.println("How much do you want to add");
+				double m = sc.nextDouble();
+				balance = balance + m; 
+			    while(balance < d) {
+			    	in = true;
+			    	System.out.println("You have Insufficient balance");
+			    	System.out.println("You have to add "+(d-balance) + " more to buy the product ");
+			    	System.out.println("1.Do you want to add money");
+					System.out.println("2.Go back to the main menu");
+					int k = sc.nextInt();
+					if(k == 1) {
+						System.out.println("how much money do you want to add");
+						double l = sc.nextInt();
+						balance = balance + l;
+					}
+					if(k==2) {
+						menu();
+					} 
+					
+			    }
+			}
+			if(n == 2) {
+				menu();
+			}
+			
+		}
+		if(in == true && d <= balance) {
+			System.out.println("1.Do you want to buy the product");
+			System.out.println("2.go back to main menu");
+			int l = sc.nextInt();
+			if(l == 1) {
+				System.out.println("Your order is successful");
+				balance = balance - d;
+				System.out.println("1.go back to main menu");
+				int o = sc.nextInt();
+				if(o == 1) {
+					menu();
+				}
+			}
+			if(l == 2) {
+				menu();
+			}
+			
+		}
+		if(d <= balance) {
+			System.out.println("Your order is successfull");
+			balance = balance - d;
+			System.out.println("1.go back to main menu");
+			int m = sc.nextInt();
+			if(m == 1) {
+				menu();
+			}
+			
+		}
+	}
+	public static void selection(int k) {
+		Scanner sc = new Scanner(System.in);
+		while(k < 5) {
+			if(k == 1) {
+				System.out.println("shirt costs "+ shirt +" rupees ");
+				System.out.println("1.Do you want to buy the product");
+				System.out.println("2.go to the main menu");
+				int n = sc.nextInt();
+				if(n == 1) {
+					buy(shirt);
+				}
+				if(n == 2) {
+					menu();
+				}
+				break;
+			}
+			if(k == 2) {
+				System.out.println("pant costs "+pant+" rupees ");
+				System.out.println("1.Do you want to buy the product");
+				System.out.println("2.go to the main menu");
+				int n = sc.nextInt();
+				if(n == 1) {
+					buy(pant);
+				}
+				if(n == 2) {
+					menu();
+				}
+				break;
+			}
+			if(k == 3) {
+				System.out.println("Mobile costs "+mobile+" rupees ");
+				System.out.println("1.Do you want to buy the product");
+				System.out.println("2.go to the main menu");
+				int n = sc.nextInt();
+				if(n == 1) {
+					buy(mobile);
+				}
+				if(n == 2) {
+					menu();
+				}
+				break;
+			}
+			if(k == 4) {
+				System.out.println("Watch costs "+watch+" rupees ");
+				System.out.println("1.Do you want to buy the product");
+				System.out.println("2.go to the main menu");
+				int n = sc.nextInt();
+				if(n == 1) {
+					buy(watch);
+				}
+				if(n == 2) {
+					menu();
+				}
+				break;
+			}
+		}
+		if(k == 5) {
+			System.out.println("Thank You Please Visit Again....");
+		}
+	}
+	
+	public static void menu() {
+		System.out.println("1."+"shirt");
+        System.out.println("2."+"pant");
+        System.out.println("3."+"mobile");
+        System.out.println("4."+"watch");
+        System.out.println("5.Exit");
+        System.out.println("Please select the produt that you want to buy ");
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        selection(n);
+	}
+
+}
